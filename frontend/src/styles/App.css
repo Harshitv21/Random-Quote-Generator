@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  background: center / cover no-repeat
+    url("./../assets/default_image.jpg");
+  transition: background 3s ease-in-out;
+}
+
+.main-content-container {
+  width: 580px;
+  background-color: #bcb8b1;
+  border: 2px solid black;
+  border-radius: 25px 5px;
+  border-bottom: 0.15em solid;
+  border-right: 0.15em solid;
+}
+
+.heading {
+  margin: 15px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  background-color: black;
+  box-shadow: red 0px 3px 6px;
+}
+
+.generate-button {
+  font-size: 0.95em;
+  margin: 20px;
+  margin-bottom: 15px;
+  padding: 6px;
+  border: 2px solid #370617;
+  border-bottom: 0.25em solid;
+  border-right: 0.25em solid;
+  border-radius: 5px;
+  background-color: rgb(143, 143, 244);
+  box-shadow: rgb(143, 143, 244) 0px 3px 6px;
+}
+
+.generate-button:active {
+  transform: translateY(3px);
+}
+
+.disabled-button {
+  background-color: rgb(243, 98, 98);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.author {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.quote {
+  font-size: 1.45em;
+  font-weight: 400;
+  line-height: 1.25em;
+  margin-bottom: 4px;
+}
+
+.source {
+  width: 280px;
+  font-weight: 800;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: #bcb8b1;
+  position: absolute;
+  top: 93%;
+  left: 79%;
+  box-shadow: rgb(139, 213, 120) 0px 3px 6px;
+}

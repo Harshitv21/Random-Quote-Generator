@@ -32,6 +32,7 @@ app.get("/unsplash/photo", async (request, response) => {
     }
 })
 
+// generate list of topics to add have to call this manually tho.
 app.get("/unsplash/topics", async (request, response) => {
     try {
         const topicsData = await axios.get("https://api.unsplash.com/topics", configTopics);

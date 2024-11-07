@@ -6,6 +6,9 @@ import { QuoteContainer } from "./components/QuoteContainer";
 import { Credits } from "./components/Credits";
 
 const SERVER_PORT = 5965;
+const deployedUrl = `${
+  import.meta.env.VITE_DEPLOYED_URL || `http://localhost:${SERVER_PORT}`
+}`;
 
 function App() {
   // quote and author states
@@ -57,8 +60,8 @@ function App() {
 
     try {
       const [getQuoteData, getRandomImage] = await Promise.all([
-        axios.get(`http://localhost:${SERVER_PORT}/quote`),
-        axios.get(`http://localhost:${SERVER_PORT}/unsplash/photo`),
+        axios.get(`${deployedUrl}/quote`),
+        axios.get(`${deployedUrl}/unsplash/photo`),
       ]);
 
       // extract quote-data and calling function to set

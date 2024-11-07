@@ -23,6 +23,10 @@ const configRandomPhoto = {
     }
 };
 
+app.get("/", async (request, response) => {
+    response.send({ "Working": true });
+})
+
 app.get("/unsplash/photo", async (request, response) => {
     try {
         const photoData = await axios.get("https://api.unsplash.com/photos/random", configRandomPhoto);

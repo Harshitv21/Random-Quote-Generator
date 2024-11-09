@@ -57,8 +57,8 @@ function App() {
         axios.get(`${deployedUrl}/unsplash/photo`),
       ]);
 
-      const extractedQuote = getQuoteData.data[0].content;
-      const extractedAuthor = getQuoteData.data[0].author;
+      const extractedQuote = getQuoteData.data[0].q;
+      const extractedAuthor = getQuoteData.data[0].a;
       setDetails(extractedQuote, extractedAuthor);
 
       let hotLink = getRandomImage.data.urls.raw;

@@ -6,24 +6,13 @@ import dotenv from "dotenv/config";
 const PORT = process.env.PORT || 5965;
 const app = express();
 
-const allowedOrigins = ['https://courageous-monstera-a8faa8.netlify.app'];
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-}));
+const corsConfig = cors({
+    origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : "*",
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+});
 
-const corsOptions = {
-    origin: 'https://courageous-monstera-a8faa8.netlify.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type'],
-    optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+app.use(corsConfig);
 
 const configTopics = {
     params: {
@@ -65,10 +54,14 @@ app.get("/unsplash/topics", async (req, res) => {
 
 app.get("/quote", async (req, res) => {
     try {
-        const { data } = await axios.get("https://api.quotable.io/quotes/random");
+        const { data } = await axios.get("https://zenquotes.io/api/random");
         res.status(200).json(data);
     } catch (error) {
-        console.error("Error fetching quote: ", error);
+        console.error("Error fetching quote: ", error.message);
+        if (error.response) {
+            console.error("Response data:", error.response.data);
+            console.error("Response status:", error.response.status);
+        }
         res.status(500).send({ message: "Error fetching quote" });
     }
 });

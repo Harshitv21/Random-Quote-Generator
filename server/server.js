@@ -8,14 +8,22 @@ const app = express();
 
 const allowedOrigins = ['https://courageous-monstera-a8faa8.netlify.app'];
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
 }));
+
+const corsOptions = {
+    origin: 'https://courageous-monstera-a8faa8.netlify.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type'],
+    optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
 const configTopics = {
     params: {

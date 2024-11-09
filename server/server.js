@@ -5,7 +5,17 @@ import dotenv from "dotenv/config";
 
 const PORT = process.env.PORT || 5965;
 const app = express();
-app.use(cors());
+
+const allowedOrigins = ['https://courageous-monstera-a8faa8.netlify.app'];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+}));
 
 const configTopics = {
     params: {
